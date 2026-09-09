@@ -6,6 +6,9 @@ const cors = require("cors");
 //2. Load file konfigurasi .env
 dontenv.config();
 
+// Load koneksi database
+const db = require("./config/db");
+
 //3. Inisialisasi aplikasi express
 const app = express();
 const PORT = process.env.PORT ||
@@ -30,6 +33,19 @@ app.get('/api/status', (req, res) => {
         success: true,
         message: "API is running",
         version: "1.0.0",
+    });
+});
+
+app.get('/api/biodata', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "Biodata berhasil diambil",
+        data: {
+            nama: "Burhan Katon",
+            kelas: "XI RPL 1",
+            cita_cita: "Fullstack Engineer",    
+            hobi:   "Programming, Gaming, Traveling"
+        }
     });
 });
 
