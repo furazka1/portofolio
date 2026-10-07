@@ -49,6 +49,19 @@ app.get('/api/biodata', (req, res) => {
     });
 });
 
+// ========================================
+// ROUTES API (Mendaftarkan route dari folder routes/)
+// ========================================
+const profileRoutes = require("./routes/profileRoutes");
+const projectRoutes = require("./routes/projectRoutes");
+const skillRoutes = require('./routes/skillRoutes');
+const experienceRoutes = require('./routes/experienceRoutes');
+
+app.use("/api/profile", profileRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/skills", skillRoutes);
+app.use("/api/experiences", experienceRoutes);
+
 //6. Middleware untuk menangani route yang tidak di temukan (404 not found)
 app.use((req, res) => {
     res.status(404).json({
